@@ -13,6 +13,12 @@ defmodule Rumbl.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, ~w(name username), [])
-    |> validate_length(:username, min: 1, max: 20)
+    |> validate_presence(:username)
+    |> validate_length(:username, max: 20)
+    |> validate_presence(:name)
+  end
+
+  defp validate_presence(changeset, field) do
+    validate_length(changeset, field, min: 1, message: "can't be blank")
   end
 end

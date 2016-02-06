@@ -6,7 +6,7 @@ defmodule Rumbl.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
-     compilers: [:phoenix] ++ Mix.compilers,
+     compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases,
@@ -19,7 +19,7 @@ defmodule Rumbl.Mixfile do
   def application do
     [mod: {Rumbl, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :gettext, :phoenix_ecto, :postgrex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -30,12 +30,13 @@ defmodule Rumbl.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.0.3"},
-     {:phoenix_ecto, "~> 1.1"},
-     {:postgrex, ">= 0.0.0"},
-     {:phoenix_html, "~> 2.1"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:cowboy, "~> 1.0"}]
+    [{:phoenix, "~> 1.1.4"},
+     {:phoenix_ecto, "~> 2.0.1"},
+     {:postgrex, ">= 0.11.0"},
+     {:phoenix_html, "~> 2.5.0"},
+     {:phoenix_live_reload, "~> 1.0.3", only: :dev},
+     {:cowboy, "~> 1.0.4"},
+     {:gettext, "~> 0.9"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
